@@ -42,7 +42,7 @@ class Motor():
 class Motors(list):
 	# Sensor types
 	NULL = "null sensor"
-	ADS5030 = "ads5030 sensor"
+	AS5030 = ADS5030 = "ads5030 sensor"
 
 	# Controller types:
 	UNITY = "unity controller"
