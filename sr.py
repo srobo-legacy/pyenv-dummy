@@ -25,7 +25,7 @@ class Motor():
 		pass
 
 	def getpos(self):
-		pass
+		return 42
 
 	class as5030():
 		def set_pins( clk = 0, dio = 1 ):
@@ -59,11 +59,11 @@ motor = Motors()
 
 # Read the digital value of a pin:
 def readpin(a):
-	pass
+	return 42
 
 # Read the analogue reading from a pin:
 def readapin(a):
-	pass
+	return 4.2
 
 # Set an output:
 def setoutput(a,b):
@@ -107,7 +107,7 @@ def setpos(n, pos):
 
 # read servo position - returns servo position
 def readpos(n):
-	pass
+	return 42.0
 
 def setlcd(n, msg=''):
 	pass
@@ -117,7 +117,7 @@ lcd = [0,1,2,3]
 # Power
 
 def getled(a):
-	pass
+	return 1
 
 #similar to jio inputs...
 def setled(a,b):
