@@ -57,15 +57,15 @@ motor = Motors()
 
 # JointIO
 
-# Read the digital value of pin 3:
+# Read the digital value of a pin:
 def readpin(a):
 	pass
 
-# Read the analogue reading from pin 3
+# Read the analogue reading from a pin:
 def readapin(a):
 	pass
 
-# Set output 1 high:
+# Set an output:
 def setoutput(a,b):
 	pass
 
