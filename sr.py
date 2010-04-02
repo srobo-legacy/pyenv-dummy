@@ -107,7 +107,7 @@ def setpos(n, pos):
 
 # read servo position - returns servo position
 def readpos(n):
-	return 42.0
+	return 42
 
 def setlcd(n, msg=''):
 	pass
