@@ -14,6 +14,15 @@ def cheese2():
 
 def main():
 
+	# set motor 0 to 20% power ahead
+	motor[0].target = 20
+
+	# wait for 10s or a button to be pressed, whichever's sooner.
+	yield query.timeout(10), query.io[0].input[0].d == 1
+
+	# stop the motor
+	motor[0].target = 0
+
 	add_coroutine(cheese)
 
 	yield query.io[4].input[1].d
@@ -29,6 +38,38 @@ def main():
 
 	# Wait for the reading of analogue input 2 on JointIO board 0 to drop below 2.5V
 	yield query.io[0].input[2].a < 2.5
+
+	# wait for a vision event to occur
+	ev = yield query.vision
+
+	if ev.was(vision):
+		for blob in ev.vision.blobs:
+			pass
+
+	# OR:
+	yield query.io[0].input[3].d == 1, query.io[0].input[2].d == 0
+	yield query.io[0].input[3].a > 2, query.io[0].input[3].a < 3
+
+
+	# AND:
+	yield (query.io[0].input[3].d == 1) & (query.io[0].input[2].d == 0)
+
+	# alternatively:
+	yield And( query.io[0].input[3].d == 1, query.io[0].input[2].d == 0 )
+
+	ev = yield query.io[0].input[1].a > 1.6, (query.io[0].input[2].d == 1) & (query.io[0].input[3].d == 0)
+	if 2 in ev.io[0].pins:
+
+		# ev.io[N].pins is a list of pins involved in the event
+		# ev.io[N].vals is an array of the pin values
+		# e.g. ev.io[0].vals[2] gives the value of the pin when the event happened
+		# the value of ev.io[0].vals[0] is meaningless
+
+		print ev.io[0].vals[2]
+
+	elif 1 in ev.io[0].pins:
+		pass
+		# ev.io.vals[1] is a voltage (float)
 
 
 	# io[IO_BOARD_NUMBER].input[PIN_NO].d
