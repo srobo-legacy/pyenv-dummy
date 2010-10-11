@@ -1,185 +1,101 @@
 from sr import *
 
 def cheese():
-    while True:
-        yield 1
-        print "I'm a Robot"
+	while True:
+		yield 1
+		print "I'm a Robot"
 
 @coroutine
 def cheese2():
-    while True:
-        print "I can tell you I'm a robot before main adds me!"
-        yield 1
+	while True:
+		print "I can tell you I'm a robot before main adds me!"
+		yield 1
 
 
 def main():
 
-    add_coroutine(cheese)
+	add_coroutine(cheese)
 
-    yield 3.4 #waits 3.4 seconds
+	yield query.io[4].input[1].d
 
-    yield 5
-    if event == timeout:
-        # timeout occurred
-        print "BANG"
+	# Wait for digital input pin 3 on JointIO board 0 to change value
+	yield query.io[0].input[3].d
 
+	# Wait for digital input 3 on JointIO board 0 to become digital '1'
+	yield query.io[0].input[3].d == 1
 
-#MOTOR
-    ########## Configuring the motor controller
-    #### Sensors:
-    # Null sensor: this is the default.
-    motor[0].sensor = motor.NULL
-    # Use AS5030 on channel 0
-    motor[0].sensor = motor.AS5030
+	# Wait for the reading of analogue input 3 on JointIO board 0 to exceed 1V
+	yield query.io[0].input[1].a > 1
 
-    # Select which feedback pins are connected to which pin:
-    motor[0].as5030.set_pins( clk = 0, dio = 1 )
-    # How many LSB's to discard from sensor (default:0)
-    motor[0].as5030.set_shr( 2 )
-
-    #### Controllers:
-    ## Selecting the controller:
-    # Unity (multiply target by 1): this is the default
-    motor[0].controller = motor.UNITY
-    # Use PID control on this channel:
-    motor[0].controller = motor.PID
-
-    ## Configuring the PID controller:
-    motor[0].PID.set_coeff( kp = -4, ki = -5, kd = -10 )
-    # Which can also be called like this:
-    motor[0].PID.sef_coeff(-4,-5,-10)
-
-    # Enable a channel:
-    motor[0].enable()
-    # Disable a channel:
-    motor[0].disable()
-
-    ########## Operating the motor controller:
-
-    # Set the target
-    # When using unity controller, this must be in [-100,100]
-    motor[0].target = 30
-    motor[0].target = -90
-    # When using PID controller, can be any 32-bit signed int, e.g:
-    motor[0].target = 3049
-    motor[0].target = -23
-
-    # motor[0].target and motor[1].target can also be used to find the current target.
-
-    # Wait for the motor to reach its target
-    # (obviously only valid when a sensor + controller is in use):
-    yield motor[0]
-
-    #get feedback position
-    motor[0].getpos()
+	# Wait for the reading of analogue input 2 on JointIO board 0 to drop below 2.5V
+	yield query.io[0].input[2].a < 2.5
 
 
-#JOINTIO
-    # Read the digital value of pin 3:
-    foo = io.pin[3]
-    # Or:
-    foo = readpin(3)
+	# io[IO_BOARD_NUMBER].input[PIN_NO].d
 
-    # Read the analogue reading from pin 3
-    jam = io.apin[3]
-    # Or:
-    jam = readapin(3)
+	# to read JoinIO board 0's digital pin 0...
+	pin0 = io[0].input[0].d
 
-    # Set output 1 high:
-    io.pin[1] = 1
-    # Or:
-    setoutput(1,1)
+	# io[IO_BOARD_NUMBER].input[PIN_NO].a
 
-#EVENTS
-    # Wait for input 3 to change digital value
-    yield io.pin[3]
+	# to read JoinIO board 0's analogue pin 2...
+	pin0 = io[0].input[2].a
 
-    # Wait for input 3 to become digital '1' (threshold 512)
-    yield io.pin[3] == 1
+	# io[IO_BOARD_NUMBER].output[PIN_NO].d = VALUE
 
-    # Wait for input 3 readings to exceed 1V
-    yield io.apin[1] > 1
+	# to set JointIO board 0's pin 1 high:
+	io[0].output[1].d = 1
 
-    # Wait for input 2 readings to go below 2.5V
-    yield io.apin[2] < 2.5
+	# to set JointIO board 0's pin 1 low:
+	io[0].output[1].d = 0
 
-    # The analogue pins do not have the "==" operator.
 
-#LOGIC
-    # OR:
-    yield io.pin[3] == 1, io.pin[2] == 0
-    yield io.apin[3] > 2, io.apin[3] < 3
+	motor[0].target = 50   # WILL work, if motor 0 exists
+	motor[1].target = -20  # WILL work, if motor 1 exists
+	motor.target = 42      # WON'T WORK
 
-    # AND:
-    yield (io.pin[3] == 1) & (io.pin[2] == 0)
-    # alternatively:
-    yield And( io.pin[3] == 1, io.pin[2] == 0 )
+	# the above is similar to the situation for 'io' and 'pwm'
 
-    if event == io:
-        pass
 
-    yield io.apin[1] > 1.6, (io.pin[2] == 1) & (io.pin[3] == 0)
-    if 2 in event.io.pins:
-        # event.io.vals is an array of the pin values
-        # e.g. event.io.vals[2] gives the value of the pin when the event happened
-        # the value of event.io.vals[0] is meaningless
-        # (and may later throw an error if read at the wrong time)
-        pass
-    elif 1 in event.io.pins:
-        # event.io.vals[1] is a voltage (float)
-        pass
+	power.led[0] = 1       # WILL work
+	power.led = 0          # WON'T WORK
+	power[0].led[0] = 1    # WON'T WORK
 
-#PWM
-    # set servo SERVO_NUMBER to position 0.0 <= POS <= 100.0
-    setpos(1, 1)
+	# the above is similar to the situation for 'vision'
 
-    # read servo position - returns servo position
-    foo = readpos(1)
 
-    # Also accessible through:
-    pwm[1] = 1
-    # This can also be read:
-    foo = pwm[1]
+	# turn LED 0 on
+	power.led[0] = 1
 
-    # Set screen 0 to read "badgers and jam"
-    lcd[0] = "badgers and jam"
+	# turn LED 1 off
+	power.led[1] = 0
 
-    # or if that's too annoying to implement in the time:
-    setlcd(0, "badgers and jam")
+	# to toggle LED 2, you can use
+	power.led[2] = not power.led[2]
 
-#POWER
-    #similar to jio inputs...
-    if power.switch[0] == 1:
-        pass
+	power.beep(440, 0.5)
 
-    #and similar to jio outputs
-    power.led[0] = 1
-    #or
-    setled(0,1)
+	# beep at 100Hz for 1s, then at 200Hz for 2s
+	power.beep( [(100, 1), (200, 2)] )
 
-    #similarly
-    bees = getled(1)
+	# ramp up from 100Hz to 1000Hz in 1s overall, with frequency jumps of 100Hz
+	power.beep( [ (x*100, 0.1) for x in range(1, 10) ] )
 
-    yield 2
-    if event == power_switch:
-        #event.power_switch.switches is a list of switches that changed
-        #event.power_switch.vals is like event.io.vals
-        pass
+	# wait until there is only 3 notes left in the beep queue
+	yield query.power.beep_queue(3)
 
-#VISION
-    #wait for vision event
-    yield vision()
 
-    if event == vision:
-        for blob in event.vision.blobs:
-            # blob has the following properties:
-            # .x (was centrex)
-            # .y (was centrey)
-            # .mass
-            # .colour (RED, BLUE, YELLOW, GREEN, ...)
-            # .height
-            # .width
-            # VISION_HEIGHT and VISION_WIDTH are the size of the image in pixels
-            pass
-        myblob = event.vision.blobs[0]
-        print myblob.x, myblob.y, myblob.mass, myblob.colour, myblob.height, myblob.width
+	# wait here for a vision event to occur, storing the event object
+	ev = yield vision
+
+	# check to see if the event was a vision event
+	if ev.was(vision):
+
+		# do something with all of the returned blobs
+		# (print RED blob co-ords. in this case)
+		for blob in ev.vision.blobs:
+
+			if blob.colour == RED:
+				print "Found red blob at " + str(blob.x) + ", " + str(blob.y)
+
+
