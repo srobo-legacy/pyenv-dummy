@@ -24,9 +24,14 @@ io = []
 
 class query():
 	io = []
+	vision = None
+
 	class power():
 		def beep_queue(n):
 			pass
+
+	def timeout(t):
+		pass
 
 # PWM
 
@@ -39,3 +44,8 @@ class power():
 	switch = [0,1,2,3]
 	def beep(hz, time=1):
 		pass
+
+# Logic Expressions
+
+def And(*args):
+	pass
