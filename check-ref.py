@@ -99,3 +99,12 @@ def main():
 				print "Found red blob at " + str(blob.x) + ", " + str(blob.y)
 
 
+	# pwm[N][SERVO_NUMBER] = POS
+
+	# set servo 1's position (on PWM board 0) to 50.0
+	pwm[0][1] = 50.0
+
+	# variable = pwm[N][SERVO_NUMBER]
+
+	# store the position of PWM board 0's servo 0 in 'bees'
+	bees = pwm[0][0]
