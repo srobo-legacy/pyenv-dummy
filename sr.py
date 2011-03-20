@@ -6,7 +6,7 @@ vision = RED = BLUE = GREEN = VISION_HEIGHT = VISION_WIDTH = 13
 
 # Coroutinens
 
-def add_coroutine(func):
+def add_coroutine(func, *args, **keys):
 	pass
 
 def coroutine(func):
