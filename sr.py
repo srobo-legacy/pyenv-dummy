@@ -2,7 +2,7 @@
 # and https://www.studentrobotics.org/docs/programming/
 
 # Constants
-vision = RED = BLUE = GREEN = VISION_HEIGHT = VISION_WIDTH = 13
+vision = RED = BLUE = GREEN = 13
 
 # Coroutinens
 
