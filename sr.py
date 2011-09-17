@@ -27,10 +27,10 @@ class query():
 	vision = None
 
 	class power():
-		def beep_queue(n):
+		def beep_queue(self):	# n
 			pass
 
-	def timeout(t):
+	def timeout(self):	# time
 		pass
 
 # PWM
@@ -42,7 +42,7 @@ pwm = [0,1,2,3,4,5,6,7]
 class power():
 	led = [0,1,2,3,4,5,6,7]
 
-	def beep(hz, time=1):
+	def beep(self, time=1):	# hz, time
 		pass
 
 # Logic Expressions
