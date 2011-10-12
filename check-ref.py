@@ -117,15 +117,10 @@ def main():
 
     # the above is similar to the situation for 'io' and 'servo'
 
+    # turn LED 0 on
     R.power.led[0] = 1       # WILL work
     R.power.led = 0          # WON'T WORK
     R.power[0].led[0] = 1    # WON'T WORK
-
-    # turn LED 0 on
-    R.power.led[0] = 1
-
-    # turn LED 1 off
-    R.power.led[1] = 0
 
     # to toggle LED 2, you can use
     R.power.led[2] = not R.power.led[2]
