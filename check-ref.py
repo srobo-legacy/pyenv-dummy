@@ -106,11 +106,10 @@ def main():
     # R.io[IO_BOARD_NUMBER].output[PIN_NO].query.d = VALUE
 
     # to set JointIO board 0's pin 1 high:
-    R.io[0].output[1].query.d = 1
+    R.io[0].output[1].d = 1
 
     # to set JointIO board 0's pin 1 low:
-    R.io[0].output[1].query.d = 0
-
+    R.io[0].output[1].d = 0
 
     R.motor[0].target = 50   # WILL work, if motor 0 exists
     R.motor[1].target = -20  # WILL work, if motor 1 exists
