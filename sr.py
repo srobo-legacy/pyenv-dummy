@@ -21,7 +21,8 @@ class Power():
 def And(*args):
     return args
 
-# TODO: check that Or doesn't exist
+def Or(*args):
+    return args
 
 # Robot
 
