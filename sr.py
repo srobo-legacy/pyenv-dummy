@@ -6,7 +6,7 @@ This should not be considered canonical!
 '''
 
 # Constants
-vision = RED = BLUE = GREEN = 13
+MARKER_ARENA = MARKER_ROBOT = MARKER_TOKEN = MARKER_BUCKET_SIDE = MARKER_BUCKET_END = 13
 
 # Power
 
@@ -15,6 +15,14 @@ class Power():
 
     def beep(self, hz, time=1):
         pass
+
+# Vision
+
+class MarkerInfo:
+    code = 42
+    type = MARKER_ARENA
+    offset = 0
+    size = 1.23
 
 # Logic Expressions
 
@@ -40,7 +48,7 @@ def see(resolution = (800, 600)):
     """
     Make the robot see stuff
     """
-    return []
+    return [MarkerInfo()]
 
 def wait_for( *polls, **named ):
     """

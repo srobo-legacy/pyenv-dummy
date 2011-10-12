@@ -49,11 +49,14 @@ def main():
     res = sr.wait_for( R.io[0].input[2].query.a < 2.5 )
 
     # wait for a vision event to occur
-    # TODO: update this
     markers = sr.see()
 
     for marker in markers:
         print marker
+        print marker.code
+        print marker.type
+        print marker.offset
+        print marker.size
 
     # OR:
     res = sr.wait_for( R.io[0].input[3].query.d == 1,
