@@ -115,8 +115,7 @@ def main():
     R.motor[1].target = -20  # WILL work, if motor 1 exists
     R.motor.target = 42      # WON'T WORK
 
-    # the above is similar to the situation for 'io' and 'pwm'
-
+    # the above is similar to the situation for 'io' and 'servo'
 
     R.power.led[0] = 1       # WILL work
     R.power.led = 0          # WON'T WORK
@@ -142,7 +141,7 @@ def main():
     # wait until there is only 3 notes left in the beep queue
     res = sr.wait_for( R.power.beep_queue(3) )
 
-    # pwm[N][SERVO_NUMBER] = POS
+    # servo[N][SERVO_NUMBER] = POS
 
     # set servo 1's position (on PWM board 0) to 50.0
     R.servo[0][1] = 50.0
