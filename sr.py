@@ -1,51 +1,42 @@
-# mainly sourced from http://trac.srobo.org/wiki/RobotAPI
-# and https://www.studentrobotics.org/docs/programming/
+'''
+This is a dummy implementation of the SR API, as documented at:
+* http://trac.srobo.org/wiki/RobotAPI
+* http://srobo.org/docs/programming/
+This should not be considered canonical!
+'''
 
 # Constants
 vision = RED = BLUE = GREEN = 13
 
-# Coroutinens
-
-def add_coroutine(func, *args, **keys):
-	pass
-
-def coroutine(func):
-	pass
-
-# Motor
-
-motor = []
-
-# JointIO
-
-io = []
-
-# Query
-
-class query():
-	io = []
-	vision = None
-
-	class power():
-		def beep_queue(self):	# n
-			pass
-
-	def timeout(self):	# time
-		pass
-
-# PWM
-
-pwm = [0,1,2,3,4,5,6,7]
-
 # Power
 
-class power():
-	led = [0,1,2,3,4,5,6,7]
+class Power():
+    led = [0,1,2,3,4,5,6,7]
 
-	def beep(self, time=1):	# hz, time
-		pass
+    def beep(self, hz, time=1):
+        pass
 
 # Logic Expressions
 
 def And(*args):
-	pass
+    return args
+
+# TODO: check that Or doesn't exist
+
+# Robot
+
+class Robot:
+    usbkey = None
+    startfifo = None
+    mode = None
+    zone = None
+    motor = []
+    io = []
+    power = Power()
+    servo = []
+
+def see(resolution = (800, 600)):
+	return []
+
+def wait_for(*args):
+	return args
