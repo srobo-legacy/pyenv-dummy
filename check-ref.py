@@ -133,9 +133,6 @@ def main():
     # ramp up from 100Hz to 1000Hz in 1s overall, with frequency jumps of 100Hz
     R.power.beep( [ (x*100, 0.1) for x in range(1, 10) ] )
 
-    # wait until there is only 3 notes left in the beep queue
-    res = sr.wait_for( R.power.beep_queue(3) )
-
     # servo[N][SERVO_NUMBER] = POS
 
     # set servo 1's position (on PWM board 0) to 50.0
