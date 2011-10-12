@@ -69,6 +69,8 @@ def main():
     res = sr.wait_for( And( R.io[0].input[3].query.d == 1,
                             R.io[0].input[2].query.d == 0 ) )
 
+    print res[0]
+
     # mix and match
     sr.wait_for( R.io[0].input[1].query.a > 1.6,
                     (R.io[0].input[2].query.d == 1)
@@ -82,6 +84,11 @@ def main():
     sr.wait_for( my_cond )
     # Use the one defined outside main
     sr.wait_for( MY_OTHER_COND )
+
+    # You can even be really clever:
+    res = sr.wait_for( my_cond = MY_OTHER_COND )
+    if res.my_cond:
+        print 'yay'
 
     # R.io[IO_BOARD_NUMBER].input[PIN_NO].query.d
 

@@ -41,5 +41,10 @@ def see(resolution = (800, 600)):
     """
     return []
 
-def wait_for(*args):
-	return args
+def wait_for( *polls, **named ):
+    """
+    Wait for at least one of the passed polls to happen
+    """
+    import collections
+    C = collections.namedtuple( "WaitResults", named.keys )
+    return C( **named )
