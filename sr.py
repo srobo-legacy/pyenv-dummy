@@ -10,7 +10,7 @@ MARKER_ARENA = MARKER_ROBOT = MARKER_TOKEN = MARKER_BUCKET_SIDE = MARKER_BUCKET_
 
 # Power
 
-class Power():
+class Power:
     led = [0,1,2,3,4,5,6,7]
 
     def beep(self, hz, time=1):
