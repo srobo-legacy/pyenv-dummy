@@ -36,7 +36,10 @@ class Robot:
     servo = []
 
 def see(resolution = (800, 600)):
-	return []
+    """
+    Make the robot see stuff
+    """
+    return []
 
 def wait_for(*args):
 	return args
