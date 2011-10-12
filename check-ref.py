@@ -44,7 +44,8 @@ def main():
     # Wait for the reading of analogue input 3 on JointIO board 0 to exceed 1V
     res = sr.wait_for( R.io[0].input[1].query.a > 1 )
 
-    # Wait for the reading of analogue input 2 on JointIO board 0 to drop below 2.5V
+    # Wait for the reading of analogue input 2
+    # on JointIO board 0 to drop below 2.5V
     res = sr.wait_for( R.io[0].input[2].query.a < 2.5 )
 
     # wait for a vision event to occur
@@ -70,7 +71,9 @@ def main():
 
     # mix and match
     sr.wait_for( R.io[0].input[1].query.a > 1.6,
-                (R.io[0].input[2].query.d == 1) & (R.io[0].input[3].query.d == 0) )
+                    (R.io[0].input[2].query.d == 1)
+                    & (R.io[0].input[3].query.d == 0)
+                )
 
     # this could also happen outside main
     my_cond = ( R.io[0].input[1].query.a > 1.6,
