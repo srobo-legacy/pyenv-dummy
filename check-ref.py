@@ -11,10 +11,10 @@ from sr import And
 
 R = sr.Robot()
 
-print sr.Robot.usbkey
-print sr.Robot.startfifo
-print sr.Robot.mode
-print sr.Robot.zone
+print R.usbkey
+print R.startfifo
+print R.mode
+print R.zone
 
 MY_OTHER_COND = ( R.io[0].input[1].query.a > 1.6,
             (R.io[0].input[2].query.d == 1) & (R.io[0].input[3].query.d == 0) )

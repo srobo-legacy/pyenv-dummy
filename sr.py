@@ -11,7 +11,8 @@ MARKER_ARENA = MARKER_ROBOT = MARKER_TOKEN = MARKER_BUCKET_SIDE = MARKER_BUCKET_
 # Power
 
 class Power:
-    led = [0,1,2,3,4,5,6,7]
+    def __init__(self):
+        self.led = [0,1,2,3,4,5,6,7]
 
     def beep(self, hz, time=1):
         pass
@@ -19,10 +20,11 @@ class Power:
 # Vision
 
 class MarkerInfo:
-    code = 42
-    type = MARKER_ARENA
-    offset = 0
-    size = 1.23
+    def __init__(self):
+        self.code = 42
+        self.type = MARKER_ARENA
+        self.offset = 0
+        self.size = 1.23
 
 # Logic Expressions
 
@@ -35,14 +37,15 @@ def Or(*args):
 # Robot
 
 class Robot:
-    usbkey = None
-    startfifo = None
-    mode = None
-    zone = None
-    motor = []
-    io = []
-    power = Power()
-    servo = []
+    def __init__(self):
+        self.usbkey = None
+        self.startfifo = None
+        self.mode = None
+        self.zone = None
+        self.motor = []
+        self.io = []
+        self.power = Power()
+        self.servo = []
 
 def see(resolution = (800, 600)):
     """
