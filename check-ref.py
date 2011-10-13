@@ -25,13 +25,13 @@ def main():
     '''
 
     # set motor 0 to 20% power ahead
-    R.motor[0].target = 20
+    R.motors[0].target = 20
 
     # wait for a button to be pressed.
     sr.wait_for( R.io[0].input[0].query.d == 1 )
 
     # stop the motor
-    R.motor[0].target = 0
+    R.motors[0].target = 0
 
     res = sr.wait_for( R.io[4].input[1].query.d )
 
@@ -111,9 +111,9 @@ def main():
     # to set JointIO board 0's pin 1 low:
     R.io[0].output[1].d = 0
 
-    R.motor[0].target = 50   # WILL work, if motor 0 exists
-    R.motor[1].target = -20  # WILL work, if motor 1 exists
-    R.motor.target = 42      # WON'T WORK
+    R.motors[0].target = 50   # WILL work, if motor 0 exists
+    R.motors[1].target = -20  # WILL work, if motor 1 exists
+    R.motors.target = 42      # WON'T WORK
 
     # the above is similar to the situation for 'io' and 'servo'
 

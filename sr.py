@@ -42,7 +42,7 @@ class Robot:
         self.startfifo = None
         self.mode = None
         self.zone = None
-        self.motor = []
+        self.motors = []
         self.io = []
         self.power = Power()
         self.servo = []
