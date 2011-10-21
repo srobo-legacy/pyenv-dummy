@@ -7,7 +7,7 @@ about the API: http://srobo.org/trac/wiki/RobotAPI.
 '''
 
 import sr
-from sr import And
+from sr import *
 
 R = sr.Robot()
 
