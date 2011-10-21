@@ -94,12 +94,36 @@ def vision_things():
 
     for marker in markers:
         print marker
-        print marker.code
-        print marker.type
-        print marker.offset
-        print marker.size
-
-
+        print marker.info
+        print marker.info.code
+        print marker.info.type
+        print marker.info.offset
+        print marker.info.size
+        print marker.timestamp
+        print marker.res
+        print marker.res[0]
+        print marker.res[1]
+        print marker.vertices
+        print len(marker.vertices)
+        print marker.vertices[0]
+        print marker.centre
+        print marker.centre.image
+        print marker.centre.image.x
+        print marker.centre.image.y
+        print marker.centre.world
+        print marker.centre.world.x
+        print marker.centre.world.y
+        print marker.centre.world.z
+        print marker.centre.polar
+        print marker.centre.polar.length
+        print marker.centre.polar.rot_x
+        print marker.centre.polar.rot_y
+        print marker.dist
+        print marker.rot_y
+        print marker.orientation
+        print marker.orientation.rot_x
+        print marker.orientation.rot_y
+        print marker.orientation.rot_z
 
 def io_things():
     '''
