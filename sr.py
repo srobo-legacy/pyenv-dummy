@@ -5,6 +5,9 @@ This is a dummy implementation of the SR API, as documented at:
 This should not be considered canonical!
 '''
 
+# Imports
+from collections import namedtuple as __namedtuple__
+
 # Constants
 MARKER_ARENA = MARKER_ROBOT = MARKER_TOKEN = MARKER_BUCKET_SIDE = MARKER_BUCKET_END = 13
 
@@ -19,12 +22,24 @@ class Power:
 
 # Vision
 
-MarkerInfo = namedtuple( "MarkerInfo", "code marker_type offset size" )
-ImageCoord = namedtuple( "ImageCoord", "x y" )
-WorldCoord = namedtuple( "WorldCoord", "x y z" )
-PolarCoord = namedtuple( "PolarCoord", "length rot_x rot_y" )
-Orientation = namedtuple( "Orientation", "rot_x rot_y rot_z" )
-Point = namedtuple( "Point", "image world polar" )
+MarkerInfo = __namedtuple__( "MarkerInfo", "code marker_type offset size" )
+ImageCoord = __namedtuple__( "ImageCoord", "x y" )
+WorldCoord = __namedtuple__( "WorldCoord", "x y z" )
+PolarCoord = __namedtuple__( "PolarCoord", "length rot_x rot_y" )
+Orientation = __namedtuple__( "Orientation", "rot_x rot_y rot_z" )
+Point = __namedtuple__( "Point", "image world polar" )
+
+class Marker:
+    def __init__(self):
+        # Aliases
+        self.info = MarkerInfo()
+        self.timestamp = 3.14159
+        self.res = (800, 600)
+        self.vertices = []
+        self.centre = Point()
+        self.dist = 42
+        self.rot_y = 13
+        self.orientation = Orientation()
 
 # Logic Expressions
 
@@ -57,6 +72,5 @@ def wait_for( *polls, **named ):
     """
     Wait for at least one of the passed polls to happen
     """
-    import collections
-    C = collections.namedtuple( "WaitResults", named.keys )
+    C = __namedtuple__( "WaitResults", named.keys )
     return C( **named )
