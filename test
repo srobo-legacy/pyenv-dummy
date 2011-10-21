@@ -1,1 +1,1 @@
-pylint --reports=n check-ref.py
+pylint --reports=n checkref.py
