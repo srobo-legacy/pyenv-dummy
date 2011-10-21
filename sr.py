@@ -19,12 +19,12 @@ class Power:
 
 # Vision
 
-class MarkerInfo:
-    def __init__(self):
-        self.code = 42
-        self.type = MARKER_ARENA
-        self.offset = 0
-        self.size = 1.23
+MarkerInfo = namedtuple( "MarkerInfo", "code marker_type offset size" )
+ImageCoord = namedtuple( "ImageCoord", "x y" )
+WorldCoord = namedtuple( "WorldCoord", "x y z" )
+PolarCoord = namedtuple( "PolarCoord", "length rot_x rot_y" )
+Orientation = namedtuple( "Orientation", "rot_x rot_y rot_z" )
+Point = namedtuple( "Point", "image world polar" )
 
 # Logic Expressions
 
@@ -47,11 +47,11 @@ class Robot:
         self.power = Power()
         self.servo = []
 
-def see(resolution = (800, 600)):
-    """
-    Make the robot see stuff
-    """
-    return [MarkerInfo()]
+    def see(self, res = (800, 600)):
+        """
+        Make the robot see stuff
+        """
+        return [Marker()]
 
 def wait_for( *polls, **named ):
     """

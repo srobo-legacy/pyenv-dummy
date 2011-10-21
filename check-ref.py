@@ -49,7 +49,7 @@ def main():
     res = sr.wait_for( R.io[0].input[2].query.a < 2.5 )
 
     # wait for a vision event to occur
-    markers = sr.see()
+    markers = R.see()
 
     for marker in markers:
         print marker
