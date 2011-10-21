@@ -19,9 +19,9 @@ print R.zone
 MY_OTHER_COND = ( R.io[0].input[1].query.a > 1.6,
             (R.io[0].input[2].query.d == 1) & (R.io[0].input[3].query.d == 0) )
 
-def main():
+def wait_things():
     '''
-    The main function.
+    Explore wait_for
     '''
 
     # set motor 0 to 20% power ahead
@@ -47,16 +47,6 @@ def main():
     # Wait for the reading of analogue input 2
     # on JointIO board 0 to drop below 2.5V
     res = sr.wait_for( R.io[0].input[2].query.a < 2.5 )
-
-    # wait for a vision event to occur
-    markers = R.see()
-
-    for marker in markers:
-        print marker
-        print marker.code
-        print marker.type
-        print marker.offset
-        print marker.size
 
     # OR:
     res = sr.wait_for( R.io[0].input[3].query.d == 1,
@@ -93,6 +83,29 @@ def main():
     if res.my_cond:
         print 'yay'
 
+
+def vision_things():
+    '''
+    Explore vision things
+    '''
+
+    # wait for a vision event to occur
+    markers = R.see()
+
+    for marker in markers:
+        print marker
+        print marker.code
+        print marker.type
+        print marker.offset
+        print marker.size
+
+
+
+def io_things():
+    '''
+    Explore io things
+    '''
+
     # R.io[IO_BOARD_NUMBER].input[PIN_NO].query.d
 
     # to read JoinIO board 0's digital pin 0...
@@ -116,6 +129,13 @@ def main():
     R.motors.target = 42      # WON'T WORK
 
     # the above is similar to the situation for 'io' and 'servo'
+
+    print pin0
+
+def power_things():
+    '''
+    Explore power things
+    '''
 
     # turn LED 0 on
     R.power.led[0] = 1       # WILL work
@@ -143,7 +163,10 @@ def main():
     # store the position of PWM board 0's servo 0 in 'bees'
     bees = R.servo[0][0]
 
-    print res, pin0, bees
+    print bees
 
 if __name__ == '__main__':
-    main()
+    io_things()
+    power_things()
+    vision_things()
+    wait_things()
