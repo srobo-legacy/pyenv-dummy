@@ -96,7 +96,7 @@ def vision_things():
         print marker
         print marker.info
         print marker.info.code
-        print marker.info.type
+        print marker.info.marker_type
         print marker.info.offset
         print marker.info.size
         print marker.timestamp
