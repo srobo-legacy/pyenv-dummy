@@ -62,7 +62,7 @@ class Robot:
         self.power = Power()
         self.servo = []
 
-    def see(self, res = (800, 600)):
+    def see(self, res = (800, 600), stats = False):
         """
         Make the robot see stuff
         """

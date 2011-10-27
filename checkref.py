@@ -89,7 +89,16 @@ def vision_things():
     Explore vision things
     '''
 
-    # wait for a vision event to occur
+    # see what we can
+    markers = R.see( res = (42, 19) )
+
+    # see what we can
+    markers = R.see( stats = True )
+
+    # see what we can
+    markers = R.see( res = (42, 19), stats = True )
+
+    # see what we can
     markers = R.see()
 
     for marker in markers:
