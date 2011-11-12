@@ -60,7 +60,7 @@ class Robot:
         self.motors = []
         self.io = []
         self.power = Power()
-        self.servo = []
+        self.servos = []
 
     def see(self, res = (800, 600), stats = False):
         """
