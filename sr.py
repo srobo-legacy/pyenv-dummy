@@ -13,9 +13,15 @@ MARKER_ARENA = MARKER_ROBOT = MARKER_TOKEN = MARKER_BUCKET_SIDE = MARKER_BUCKET_
 
 # Power
 
+class Battery:
+    def __init__(self):
+        self.voltage = 12.3
+        self.current = 1.3
+
 class Power:
     def __init__(self):
         self.led = [0,1,2,3,4,5,6,7]
+        self.battery = Battery()
 
     def beep(self, hz, time=1):
         pass

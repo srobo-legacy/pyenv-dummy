@@ -15,6 +15,7 @@ print R.usbkey
 print R.startfifo
 print R.mode
 print R.zone
+print R.power.battery.voltage, R.power.battery.current
 
 MY_OTHER_COND = ( R.io[0].input[1].query.a > 1.6,
             (R.io[0].input[2].query.d == 1) & (R.io[0].input[3].query.d == 0) )
