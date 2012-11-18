@@ -9,7 +9,7 @@ This should not be considered canonical!
 from collections import namedtuple as __namedtuple__
 
 # Constants
-MARKER_ARENA = MARKER_ROBOT = MARKER_TOKEN = MARKER_BUCKET_SIDE = MARKER_BUCKET_END = 13
+MARKER_ARENA = MARKER_ROBOT = MARKER_TOKEN = MARKER_PEDESTAL = 13
 
 # Power
 

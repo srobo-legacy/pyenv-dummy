@@ -102,6 +102,8 @@ def vision_things():
     # see what we can
     markers = R.see()
 
+    print "All marker types: ", MARKER_ARENA, MARKER_ROBOT, MARKER_PEDESTAL, MARKER_TOKEN
+
     for marker in markers:
         print marker
         print marker.info
