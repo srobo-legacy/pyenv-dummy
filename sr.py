@@ -69,7 +69,7 @@ class Robot:
         self.mode = None
         self.zone = None
         self.motors = []
-        self.io = []
+        self.ruggeduinos = []
         self.power = Power()
         self.servos = []
 
