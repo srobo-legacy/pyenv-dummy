@@ -78,10 +78,3 @@ class Robot:
         Make the robot see stuff
         """
         return [Marker()]
-
-def wait_for( *polls, **named ):
-    """
-    Wait for at least one of the passed polls to happen
-    """
-    C = __namedtuple__( "WaitResults", named.keys )
-    return C( **named )
