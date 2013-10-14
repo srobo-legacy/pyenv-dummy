@@ -17,73 +17,26 @@ print R.mode
 print R.zone
 print R.power.battery.voltage, R.power.battery.current
 
-MY_OTHER_COND = ( R.io[0].input[1].query.a > 1.6,
-            (R.io[0].input[2].query.d == 1) & (R.io[0].input[3].query.d == 0) )
+def motor_things():
 
-def wait_things():
-    '''
-    Explore wait_for
-    '''
+    # motor 0, channel 0 to full power forward
+    R.motors[0].m0.power = 100
 
-    # set motor 0 to 20% power ahead
-    R.motors[0].target = 20
+    # motor 1, channel 0 to full power reverse
+    R.motors[1].m0.power = -100
 
-    # wait for a button to be pressed.
-    sr.wait_for( R.io[0].input[0].query.d == 1 )
+    # motor 0, channel 1 to half power forward
+    R.motors[0].m1.power = 50
 
-    # stop the motor
-    R.motors[0].target = 0
+    # motor 1, channel 0 stopped
+    R.motors[1].m0.power = 0
 
-    res = sr.wait_for( R.io[4].input[1].query.d )
+    # the following will put motor 0, channel 1 at 25% power (forwards) for 2.5 seconds:
+    R.motors[0].m1.power = 25
+    R.motors[0].m1.power = 0
 
-    # Wait for digital input pin 3 on JointIO board 0 to change value
-    res = sr.wait_for( R.io[0].input[3].query.d )
-
-    # Wait for digital input 3 on JointIO board 0 to become digital '1'
-    res = sr.wait_for( R.io[0].input[3].query.d == 1 )
-
-    # Wait for the reading of analogue input 3 on JointIO board 0 to exceed 1V
-    res = sr.wait_for( R.io[0].input[1].query.a > 1 )
-
-    # Wait for the reading of analogue input 2
-    # on JointIO board 0 to drop below 2.5V
-    res = sr.wait_for( R.io[0].input[2].query.a < 2.5 )
-
-    # OR:
-    res = sr.wait_for( R.io[0].input[3].query.d == 1,
-                        R.io[0].input[2].query.d == 0 )
-    res = sr.wait_for( R.io[0].input[3].query.a > 2,
-                        R.io[0].input[3].query.a < 3 )
-
-    # AND:
-    res = sr.wait_for( (R.io[0].input[3].query.d == 1)
-                        & (R.io[0].input[2].query.d == 0) )
-
-    # alternatively:
-    res = sr.wait_for( And( R.io[0].input[3].query.d == 1,
-                            R.io[0].input[2].query.d == 0 ) )
-
-    print res[0]
-
-    # mix and match
-    sr.wait_for( R.io[0].input[1].query.a > 1.6,
-                    (R.io[0].input[2].query.d == 1)
-                    & (R.io[0].input[3].query.d == 0)
-                )
-
-    # this could also happen outside main
-    my_cond = ( R.io[0].input[1].query.a > 1.6,
-            (R.io[0].input[2].query.d == 1) & (R.io[0].input[3].query.d == 0) )
-
-    sr.wait_for( my_cond )
-    # Use the one defined outside main
-    sr.wait_for( MY_OTHER_COND )
-
-    # You can even be really clever:
-    res = sr.wait_for( my_cond = MY_OTHER_COND )
-    if res.my_cond:
-        print 'yay'
-
+    # get the current output power of motor 0, channel 0
+    currentTarget = R.motors[0].m0.power
 
 def vision_things():
     '''
@@ -102,7 +55,8 @@ def vision_things():
     # see what we can
     markers = R.see()
 
-    print "All marker types: ", MARKER_ARENA, MARKER_ROBOT, MARKER_PEDESTAL, MARKER_TOKEN
+    print "All marker types: ", MARKER_ARENA, MARKER_ROBOT, MARKER_SLOT, \
+            MARKER_TOKEN_TOP, MARKER_TOKEN_BOTTOM, MARKER_TOKEN_SIDE
 
     for marker in markers:
         print marker
@@ -137,36 +91,35 @@ def vision_things():
         print marker.orientation.rot_y
         print marker.orientation.rot_z
 
-def io_things():
+def ruggeduino_things():
     '''
-    Explore io things
+    Explore ruggeduinos
     '''
 
-    # R.io[IO_BOARD_NUMBER].input[PIN_NO].query.d
+    # stop the motor
+    R.motors[0].target = 0
 
-    # to read JoinIO board 0's digital pin 0...
-    pin0 = R.io[0].input[0].d
+    # to set Ruggeduino board 0's pin 2 to output
+    R.ruggeduinos[0].pin_mode(2, OUTPUT)
+    # to set Ruggeduino board 0's pin 3 to input
+    R.ruggeduinos[0].pin_mode(3, INPUT)
+    R.ruggeduinos[0].pin_mode(3, INPUT_PULLUP)
 
-    # R.io[IO_BOARD_NUMBER].input[PIN_NO].query.a
-
-    # to read JoinIO board 0's analogue pin 2...
-    pin0 = R.io[0].input[2].a
-
-    # R.io[IO_BOARD_NUMBER].output[PIN_NO].query.d = VALUE
-
-    # to set JointIO board 0's pin 1 high:
-    R.io[0].output[1].d = 1
-
-    # to set JointIO board 0's pin 1 low:
-    R.io[0].output[1].d = 0
-
-    R.motors[0].target = 50   # WILL work, if motor 0 exists
-    R.motors[1].target = -20  # WILL work, if motor 1 exists
-    R.motors.target = 42      # WON'T WORK
-
-    # the above is similar to the situation for 'io' and 'servo'
+    # to read Ruggeduino board 0's digital pin 3...
+    pin0 = R.ruggeduinos[0].digital_read(3)
 
     print pin0
+
+    # to read Ruggeduino board 0's analogue pin A0...
+    pin0 = R.ruggeduinos[0].analogue_read(0)
+
+    print pin0
+
+    # to set Ruggeduino board 0's pin 2 high:
+    R.ruggeduinos[0].digital_write(2, True)
+
+    # to set Ruggeduino board 0's pin 2 low:
+    R.ruggeduinos[0].digital_write(2, False)
 
 def power_things():
     '''
@@ -202,7 +155,7 @@ def power_things():
     print bees
 
 if __name__ == '__main__':
-    io_things()
+    motor_things()
     power_things()
+    ruggeduino_things()
     vision_things()
-    wait_things()
