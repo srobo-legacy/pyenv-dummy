@@ -149,20 +149,30 @@ def power_things():
     # ramp up from 100Hz to 1000Hz in 1s overall, with frequency jumps of 100Hz
     R.power.beep( [ (x*100, 0.1) for x in range(1, 10) ] )
 
+def servo_things():
+
     # servo[N][SERVO_NUMBER] = POS
 
     # set servo 1's position (on PWM board 0) to 50.0
     R.servos[0][1] = 50.0
 
+    first = R.servos[0]
+    first[1] = 49
+    print first[1]
+
     # variable = pwm[N][SERVO_NUMBER]
 
     # store the position of PWM board 0's servo 0 in 'bees'
     bees = R.servos[0][0]
-
     print bees
+
+    for sb in R.servos:
+        sb[1] = 49
+        print sb[1]
 
 if __name__ == '__main__':
     motor_things()
     power_things()
     ruggeduino_things()
+    servo_things()
     vision_things()
