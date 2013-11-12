@@ -6,7 +6,7 @@ This should not be considered canonical!
 '''
 
 # Imports
-from collections import namedtuple as __namedtuple__
+from collections import namedtuple as _namedtuple
 
 # Constants
 MARKER_ARENA = 13
@@ -37,12 +37,12 @@ class Power:
 
 # Vision
 
-MarkerInfo = __namedtuple__( "MarkerInfo", "code marker_type offset size" )
-ImageCoord = __namedtuple__( "ImageCoord", "x y" )
-WorldCoord = __namedtuple__( "WorldCoord", "x y z" )
-PolarCoord = __namedtuple__( "PolarCoord", "length rot_x rot_y" )
-Orientation = __namedtuple__( "Orientation", "rot_x rot_y rot_z" )
-Point = __namedtuple__( "Point", "image world polar" )
+MarkerInfo = _namedtuple( "MarkerInfo", "code marker_type offset size" )
+ImageCoord = _namedtuple( "ImageCoord", "x y" )
+WorldCoord = _namedtuple( "WorldCoord", "x y z" )
+PolarCoord = _namedtuple( "PolarCoord", "length rot_x rot_y" )
+Orientation = _namedtuple( "Orientation", "rot_x rot_y rot_z" )
+Point = _namedtuple( "Point", "image world polar" )
 
 class Marker:
     def __init__(self):
