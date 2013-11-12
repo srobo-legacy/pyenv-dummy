@@ -41,6 +41,8 @@ def motor_things():
     # Access Motor by id
     first = R.motors["sr01234"]
 
+    first.m0.power = 19
+
 def vision_things():
     '''
     Explore vision things
@@ -126,6 +128,8 @@ def ruggeduino_things():
 
     # Access Ruggeduino by id
     first = R.ruggeduinos["sr01234"]
+
+    first.digital_write(3, False)
 
 def power_things():
     '''
