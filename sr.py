@@ -91,6 +91,10 @@ def Or(*args):
 # Robot
 
 class Robot:
+    @classmethod
+    def setup(cls):
+        return Robot()
+
     def __init__(self):
         self.usbkey = None
         self.startfifo = None
@@ -106,3 +110,20 @@ class Robot:
         Make the robot see stuff
         """
         return [Marker()]
+
+    def init(self):
+        pass
+
+    def wait_start(self):
+        pass
+
+    def ruggeduino_set_handler_by_id(self, r_id, handler):
+        self.ruggeduinos = [handler()]
+
+    def ruggeduino_set_handler_by_fwver(self, fwver, handler):
+        self.ruggeduinos = [handler()]
+
+    def ruggeduino_ignore_id( self, r_id ):
+        "Ignore the Ruggeduino with the given ID"
+        IgnoredRuggeduino = _namedtuple( "IgnoredRuggeduino", "path" )
+        self.ruggeduino_set_handler_by_id(r_id, IgnoredRuggeduino)
