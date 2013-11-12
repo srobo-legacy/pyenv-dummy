@@ -101,9 +101,6 @@ def ruggeduino_things():
     Explore ruggeduinos
     '''
 
-    # stop the motor
-    R.motors[0].target = 0
-
     # to set Ruggeduino board 0's pin 2 to output
     R.ruggeduinos[0].pin_mode(2, OUTPUT)
     # to set Ruggeduino board 0's pin 3 to input
