@@ -40,8 +40,16 @@ def motor_things():
 
     # Access Motor by id
     first = R.motors["sr01234"]
-
     first.m0.power = 19
+
+    # In a loop
+    for m in R.motors:
+        l = m.m0
+        r = m.m1
+        print l.power
+        l.power = 42
+        print r.power
+        r.power = 21
 
 def vision_things():
     '''
@@ -125,8 +133,14 @@ def ruggeduino_things():
 
     # Access Ruggeduino by id
     first = R.ruggeduinos["sr01234"]
-
     first.digital_write(3, False)
+
+    # In a loop
+    for duino in R.ruggeduinos:
+        duino.pin_mode(3, INPUT)
+        print duino.digital_read(3)
+        duino.digital_write(0, False)
+        print duino.analogue_read(0)
 
 def power_things():
     '''

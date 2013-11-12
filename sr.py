@@ -35,6 +35,30 @@ class Power:
     def beep(self, hz, time=1):
         pass
 
+# Motor
+
+class Motor(object):
+    def __init__(self):
+        MotorChannel = _namedtuple( "MotorChannel", "power" )
+
+        self.m0 = MotorChannel()
+        self.m1 = MotorChannel()
+
+# Ruggeduino
+
+class Ruggeduino(object):
+    def pin_mode(self, pin, mode):
+        pass
+
+    def digital_read(self, pin):
+        return False
+
+    def digital_write(self, pin, value):
+        pass
+
+    def analogue_read(self, pin):
+        return False
+
 # Vision
 
 MarkerInfo = _namedtuple( "MarkerInfo", "code marker_type offset size" )
@@ -72,8 +96,8 @@ class Robot:
         self.startfifo = None
         self.mode = None
         self.zone = None
-        self.motors = []
-        self.ruggeduinos = []
+        self.motors = [Motor()]
+        self.ruggeduinos = [Ruggeduino()]
         self.power = Power()
         self.servos = []
 
