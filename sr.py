@@ -125,5 +125,5 @@ class Robot:
 
     def ruggeduino_ignore_id( self, r_id ):
         "Ignore the Ruggeduino with the given ID"
-        IgnoredRuggeduino = _namedtuple( "IgnoredRuggeduino", "path" )
+        IgnoredRuggeduino = _namedtuple( "IgnoredRuggeduino", "path serialnum" )
         self.ruggeduino_set_handler_by_id(r_id, IgnoredRuggeduino)

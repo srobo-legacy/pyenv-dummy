@@ -216,6 +216,7 @@ def alt_duino_things():
     # this will error, unfortunately
     #for r in R.ruggeduinos:
     #    r.path
+    #    r.serialnum
     #    r.test()
 
 if __name__ == '__main__':
