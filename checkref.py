@@ -38,6 +38,9 @@ def motor_things():
     # get the current output power of motor 0, channel 0
     currentTarget = R.motors[0].m0.power
 
+    # Access Motor by id
+    first = R.motors["sr01234"]
+
 def vision_things():
     '''
     Explore vision things
@@ -120,6 +123,9 @@ def ruggeduino_things():
 
     # to set Ruggeduino board 0's pin 2 low:
     R.ruggeduinos[0].digital_write(2, False)
+
+    # Access Ruggeduino by id
+    first = R.ruggeduinos["sr01234"]
 
 def power_things():
     '''
