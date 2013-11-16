@@ -80,14 +80,6 @@ class Marker:
         self.rot_y = 13
         self.orientation = Orientation()
 
-# Logic Expressions
-
-def And(*args):
-    return args
-
-def Or(*args):
-    return args
-
 # Robot
 
 class Robot:
