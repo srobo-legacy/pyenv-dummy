@@ -184,9 +184,45 @@ def servo_things():
         sb[1] = 49
         print sb[1]
 
+class CustomRuggeduino(Ruggeduino):
+    def test(self):
+        print "test"
+
+def alt_duino_things():
+    # a) Using the ruggeduino ID:
+    R = Robot.setup()
+    R.ruggeduino_set_handler_by_id( "123123123123123", CustomRuggeduino )
+    R.init()
+    R.wait_start()
+    R.ruggeduinos[0].test()
+
+    # b) Using the first part of the firmware version:
+    R = Robot.setup()
+    R.ruggeduino_set_handler_by_fwver( "SRcustom", CustomRuggeduino )
+    R.init()
+    R.wait_start()
+    R.ruggeduinos[0].test()
+
+    # 3) Use their own firmware not based on our firmware
+    R = Robot.setup()
+    R.ruggeduino_ignore_id( "123123123123123" )
+    R.init()
+
+    # This is the ignored ruggeduino's device path
+    print R.ruggeduinos[0].path
+
+    R.wait_start()
+
+    # this will error, unfortunately
+    #for r in R.ruggeduinos:
+    #    r.path
+    #    r.serialnum
+    #    r.test()
+
 if __name__ == '__main__':
     motor_things()
     power_things()
     ruggeduino_things()
     servo_things()
     vision_things()
+    alt_duino_things()
