@@ -188,6 +188,17 @@ class CustomRuggeduino(Ruggeduino):
     def test(self):
         print "test"
 
+    # function for instructing a Ruggeduino to bake a cake
+    def bake_cake(self):
+        with self.lock:
+            self.command("c")
+
+    # function for instructing a Ruggeduino to bake another cake
+    def bake_cake2(self):
+        with self.lock:
+            resp = self.command("c")
+        return int(resp)
+
 def alt_duino_things():
     # a) Using the ruggeduino ID:
     R = Robot.setup()
@@ -202,6 +213,11 @@ def alt_duino_things():
     R.init()
     R.wait_start()
     R.ruggeduinos[0].test()
+
+    R.ruggeduinos[0].bake_cake()
+    print R.ruggeduinos[0].bake_cake2()
+    # and you'll still be able to do this:
+    R.ruggeduinos[0].digital_read(3)
 
     # 3) Use their own firmware not based on our firmware
     R = Robot.setup()

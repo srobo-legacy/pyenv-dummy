@@ -47,6 +47,13 @@ class Motor(object):
 # Ruggeduino
 
 class Ruggeduino(object):
+    # Custom Ruggeduino things
+    lock = None
+
+    def command(self, string):
+        pass
+
+    # Plain Ruggeduino things
     def pin_mode(self, pin, mode):
         pass
 
