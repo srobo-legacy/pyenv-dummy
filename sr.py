@@ -22,12 +22,12 @@ INPUT_PULLUP = "INPUT_PULLUP"
 
 # Power
 
-class Battery:
+class Battery(object):
     def __init__(self):
         self.voltage = 12.3
         self.current = 1.3
 
-class Power:
+class Power(object):
     def __init__(self):
         self.led = [0,1,2,3,4,5,6,7]
         self.battery = Battery()
@@ -75,7 +75,7 @@ PolarCoord = _namedtuple( "PolarCoord", "length rot_x rot_y" )
 Orientation = _namedtuple( "Orientation", "rot_x rot_y rot_z" )
 Point = _namedtuple( "Point", "image world polar" )
 
-class Marker:
+class Marker(object):
     def __init__(self):
         # Aliases
         self.info = MarkerInfo()
@@ -89,7 +89,7 @@ class Marker:
 
 # Robot
 
-class Robot:
+class Robot(object):
     @classmethod
     def setup(cls):
         return Robot()
