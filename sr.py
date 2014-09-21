@@ -39,7 +39,9 @@ class Power(object):
 
 class Motor(object):
     def __init__(self):
-        MotorChannel = _namedtuple( "MotorChannel", "power" )
+        class MotorChannel(object):
+            def __init__(self):
+                self.power = 0
 
         self.m0 = MotorChannel()
         self.m1 = MotorChannel()
@@ -99,10 +101,10 @@ class Robot(object):
         self.startfifo = None
         self.mode = None
         self.zone = None
-        self.motors = [Motor()]
-        self.ruggeduinos = [Ruggeduino()]
+        self.motors = {0: Motor()}
+        self.ruggeduinos = {0: Ruggeduino()}
         self.power = Power()
-        self.servos = []
+        self.servos = [[]]
 
     def see(self, res = (800, 600), stats = False):
         """
