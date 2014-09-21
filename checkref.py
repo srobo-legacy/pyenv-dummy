@@ -43,7 +43,7 @@ def motor_things():
     first.m0.power = 19
 
     # In a loop
-    for m in R.motors:
+    for m in R.motors.values():
         l = m.m0
         r = m.m1
         print l.power
@@ -136,7 +136,7 @@ def ruggeduino_things():
     first.digital_write(3, False)
 
     # In a loop
-    for duino in R.ruggeduinos:
+    for duino in R.ruggeduinos.values():
         duino.pin_mode(3, INPUT)
         print duino.digital_read(3)
         duino.digital_write(0, False)
