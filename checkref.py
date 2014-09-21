@@ -6,16 +6,18 @@ read the docs (http://srobo.org/docs/programming), or see the trac page
 about the API: http://srobo.org/trac/wiki/RobotAPI.
 '''
 
+from __future__ import print_function
+
 import sr
 from sr import *
 
 R = sr.Robot()
 
-print R.usbkey
-print R.startfifo
-print R.mode
-print R.zone
-print R.power.battery.voltage, R.power.battery.current
+print(R.usbkey)
+print(R.startfifo)
+print(R.mode)
+print(R.zone)
+print(R.power.battery.voltage, R.power.battery.current)
 
 def motor_things():
 
@@ -46,9 +48,9 @@ def motor_things():
     for m in R.motors.values():
         l = m.m0
         r = m.m1
-        print l.power
+        print(l.power)
         l.power = 42
-        print r.power
+        print(r.power)
         r.power = 21
 
 def vision_things():
@@ -68,41 +70,41 @@ def vision_things():
     # see what we can
     markers = R.see()
 
-    print "All marker types: ", MARKER_ARENA, MARKER_ROBOT, MARKER_SLOT, \
-            MARKER_TOKEN_TOP, MARKER_TOKEN_BOTTOM, MARKER_TOKEN_SIDE
+    print("All marker types: ", MARKER_ARENA, MARKER_ROBOT, MARKER_SLOT, \
+            MARKER_TOKEN_TOP, MARKER_TOKEN_BOTTOM, MARKER_TOKEN_SIDE)
 
     for marker in markers:
-        print marker
-        print marker.info
-        print marker.info.code
-        print marker.info.marker_type
-        print marker.info.offset
-        print marker.info.size
-        print marker.timestamp
-        print marker.res
-        print marker.res[0]
-        print marker.res[1]
-        print marker.vertices
-        print len(marker.vertices)
-        print marker.vertices[0]
-        print marker.centre
-        print marker.centre.image
-        print marker.centre.image.x
-        print marker.centre.image.y
-        print marker.centre.world
-        print marker.centre.world.x
-        print marker.centre.world.y
-        print marker.centre.world.z
-        print marker.centre.polar
-        print marker.centre.polar.length
-        print marker.centre.polar.rot_x
-        print marker.centre.polar.rot_y
-        print marker.dist
-        print marker.rot_y
-        print marker.orientation
-        print marker.orientation.rot_x
-        print marker.orientation.rot_y
-        print marker.orientation.rot_z
+        print(marker)
+        print(marker.info)
+        print(marker.info.code)
+        print(marker.info.marker_type)
+        print(marker.info.offset)
+        print(marker.info.size)
+        print(marker.timestamp)
+        print(marker.res)
+        print(marker.res[0])
+        print(marker.res[1])
+        print(marker.vertices)
+        print(len(marker.vertices))
+        print(marker.vertices[0])
+        print(marker.centre)
+        print(marker.centre.image)
+        print(marker.centre.image.x)
+        print(marker.centre.image.y)
+        print(marker.centre.world)
+        print(marker.centre.world.x)
+        print(marker.centre.world.y)
+        print(marker.centre.world.z)
+        print(marker.centre.polar)
+        print(marker.centre.polar.length)
+        print(marker.centre.polar.rot_x)
+        print(marker.centre.polar.rot_y)
+        print(marker.dist)
+        print(marker.rot_y)
+        print(marker.orientation)
+        print(marker.orientation.rot_x)
+        print(marker.orientation.rot_y)
+        print(marker.orientation.rot_z)
 
 def ruggeduino_things():
     '''
@@ -118,12 +120,12 @@ def ruggeduino_things():
     # to read Ruggeduino board 0's digital pin 3...
     pin0 = R.ruggeduinos[0].digital_read(3)
 
-    print pin0
+    print(pin0)
 
     # to read Ruggeduino board 0's analogue pin A0...
     pin0 = R.ruggeduinos[0].analogue_read(0)
 
-    print pin0
+    print(pin0)
 
     # to set Ruggeduino board 0's pin 2 high:
     R.ruggeduinos[0].digital_write(2, True)
@@ -138,9 +140,9 @@ def ruggeduino_things():
     # In a loop
     for duino in R.ruggeduinos.values():
         duino.pin_mode(3, INPUT)
-        print duino.digital_read(3)
+        print(duino.digital_read(3))
         duino.digital_write(0, False)
-        print duino.analogue_read(0)
+        print(duino.analogue_read(0))
 
 def power_things():
     '''
@@ -172,21 +174,21 @@ def servo_things():
 
     first = R.servos[0]
     first[1] = 49
-    print first[1]
+    print(first[1])
 
     # variable = pwm[N][SERVO_NUMBER]
 
     # store the position of PWM board 0's servo 0 in 'bees'
     bees = R.servos[0][0]
-    print bees
+    print(bees)
 
     for sb in R.servos:
         sb[1] = 49
-        print sb[1]
+        print(sb[1])
 
 class CustomRuggeduino(Ruggeduino):
     def test(self):
-        print "test"
+        print("test")
 
     # function for instructing a Ruggeduino to bake a cake
     def bake_cake(self):
@@ -215,7 +217,7 @@ def alt_duino_things():
     R.ruggeduinos[0].test()
 
     R.ruggeduinos[0].bake_cake()
-    print R.ruggeduinos[0].bake_cake2()
+    print(R.ruggeduinos[0].bake_cake2())
     # and you'll still be able to do this:
     R.ruggeduinos[0].digital_read(3)
 
@@ -225,7 +227,7 @@ def alt_duino_things():
     R.init()
 
     # This is the ignored ruggeduino's device path
-    print R.ruggeduinos[0].path
+    print(R.ruggeduinos[0].path)
 
     R.wait_start()
 
