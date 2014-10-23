@@ -94,7 +94,6 @@ class Robot(object):
 
     def __init__(self):
         self.usbkey = None
-        self.startfifo = None
         self.mode = None
         self.zone = None
         self.motors = {0: Motor()}
