@@ -8,10 +8,10 @@ about the API: http://srobo.org/trac/wiki/RobotAPI.
 
 from __future__ import print_function
 
-import sr
-from sr import *
+import sr.robot
+from sr.robot import *
 
-R = sr.Robot()
+R = sr.robot.Robot()
 
 print(R.usbkey)
 print(R.startfifo)
