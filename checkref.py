@@ -17,7 +17,6 @@ print(R.usbkey)
 print(R.startfifo)
 print(R.mode)
 print(R.zone)
-print(R.power.battery.voltage, R.power.battery.current)
 
 def motor_things():
 
@@ -149,7 +148,7 @@ def power_things():
     Explore power things
     '''
 
-    # Nothing here!
+    print(R.power.battery.voltage, R.power.battery.current)
 
 def servo_things():
 
