@@ -29,7 +29,6 @@ class Battery(object):
 
 class Power(object):
     def __init__(self):
-        self.led = [0,1,2,3,4,5,6,7]
         self.battery = Battery()
 
     def beep(self, hz, time=1):

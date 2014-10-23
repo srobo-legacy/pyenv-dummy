@@ -149,14 +149,6 @@ def power_things():
     Explore power things
     '''
 
-    # turn LED 0 on
-    R.power.led[0] = 1       # WILL work
-    R.power.led = 0          # WON'T WORK
-    R.power[0].led[0] = 1    # WON'T WORK
-
-    # to toggle LED 2, you can use
-    R.power.led[2] = not R.power.led[2]
-
     R.power.beep(440, 0.5)
 
     # beep at 100Hz for 1s, then at 200Hz for 2s
