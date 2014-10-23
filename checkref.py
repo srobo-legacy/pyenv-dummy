@@ -149,13 +149,7 @@ def power_things():
     Explore power things
     '''
 
-    R.power.beep(440, 0.5)
-
-    # beep at 100Hz for 1s, then at 200Hz for 2s
-    R.power.beep( [(100, 1), (200, 2)] )
-
-    # ramp up from 100Hz to 1000Hz in 1s overall, with frequency jumps of 100Hz
-    R.power.beep( [ (x*100, 0.1) for x in range(1, 10) ] )
+    # Nothing here!
 
 def servo_things():
 
