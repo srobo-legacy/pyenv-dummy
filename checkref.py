@@ -69,8 +69,7 @@ def vision_things():
     # see what we can
     markers = R.see()
 
-    print("All marker types: ", MARKER_ARENA, MARKER_ROBOT, MARKER_SLOT, \
-            MARKER_TOKEN_TOP, MARKER_TOKEN_BOTTOM, MARKER_TOKEN_SIDE)
+    print("All marker types: ", MARKER_ARENA, MARKER_ROBOT, MARKER_FLAG)
 
     for marker in markers:
         print(marker)
