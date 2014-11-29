@@ -1,1 +1,10 @@
-pylint --rcfile=/dev/null --errors-only --output-format=parseable --reports=n checkref.py
+#!/bin/sh
+
+if [ -z "$1" ]
+then
+    target=checkref.py
+else
+    target="$1"
+fi
+
+pylint --rcfile=/dev/null --errors-only --output-format=parseable --reports=n $target
