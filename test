@@ -7,4 +7,5 @@ else
     target="$1"
 fi
 
-pylint --rcfile=/dev/null --errors-only --output-format=parseable --reports=n $target
+msg_template='--msg-template="{path}:{line}: [{msg_id}({symbol}), {obj}] {msg}"'
+pylint --rcfile=/dev/null --errors-only "$msg_template" --reports=n $target
