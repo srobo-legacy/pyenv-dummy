@@ -160,6 +160,10 @@ def servo_things():
     first[1] = 49
     print(first[1])
 
+    more = R.servos["ABC"]
+    more[2] = 49
+    print(more[2])
+
     # variable = pwm[N][SERVO_NUMBER]
 
     # store the position of PWM board 0's servo 0 in 'bees'

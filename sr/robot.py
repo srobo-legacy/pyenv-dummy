@@ -95,7 +95,7 @@ class Robot(object):
         self.motors = {0: Motor()}
         self.ruggeduinos = {0: Ruggeduino()}
         self.power = Power()
-        self.servos = [[]]
+        self.servos = {0: []}
 
     def see(self, res = (800, 600), stats = False):
         """
