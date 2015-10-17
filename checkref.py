@@ -148,6 +148,9 @@ def power_things():
     '''
 
     print(R.power.battery.voltage, R.power.battery.current)
+    R.power.beep(500, note='d')
+    R.power.beep(2000, frequency=400)
+
 
 def servo_things():
 
