@@ -26,6 +26,9 @@ class Power(object):
     def __init__(self):
         self.battery = Battery()
 
+    def beep(self, duration, note='c'):
+        pass
+
 # Motor
 
 class Motor(object):
