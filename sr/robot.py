@@ -9,7 +9,9 @@ This should not be considered canonical!
 from collections import namedtuple as _namedtuple
 
 # Constants
-MARKER_ARENA, MARKER_ROBOT, MARKER_FLAG = 'arena', 'robot', 'flag'
+MARKER_ARENA, MARKER_ROBOT = 'arena', 'robot'
+MARKER_TOKEN_TOP, MARKER_TOKEN_SIDE, MARKER_TOKEN_BOTTOM = 'top', 'side', 'bottom'
+NET_A, NET_B, NET_C = 'a', 'b', 'c'
 
 INPUT = "INPUT"
 OUTPUT = "OUTPUT"
@@ -64,7 +66,7 @@ class Ruggeduino(object):
 
 # Vision
 
-MarkerInfo = _namedtuple( "MarkerInfo", "code marker_type offset size" )
+MarkerInfo = _namedtuple( "MarkerInfo", "code marker_type token_net offset size" )
 ImageCoord = _namedtuple( "ImageCoord", "x y" )
 WorldCoord = _namedtuple( "WorldCoord", "x y z" )
 PolarCoord = _namedtuple( "PolarCoord", "length rot_x rot_y" )
