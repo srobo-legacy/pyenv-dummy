@@ -96,7 +96,7 @@ class Robot(object):
         self.usbkey = None
         self.startfifo = None
         self.mode = None
-        self.zone = None
+        self.zone = 0
         self.motors = {0: Motor()}
         self.ruggeduinos = {0: Ruggeduino()}
         self.power = Power()
