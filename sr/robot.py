@@ -46,7 +46,9 @@ class Motor(object):
 
 class Ruggeduino(object):
     # Custom Ruggeduino things
-    lock = None
+    def __init__(self):
+        self.lock = None
+        self.path = '/dev/null'
 
     def command(self, string):
         pass
