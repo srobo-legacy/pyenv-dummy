@@ -24,9 +24,14 @@ class Battery(object):
         self.voltage = 12.3
         self.current = 1.3
 
+class Output(object):
+    def __setitem__(self, index, value):
+        pass
+
 class Power(object):
     def __init__(self):
         self.battery = Battery()
+        self.output = Output()
 
     def beep(self, duration, note=None, frequency=None):
         pass

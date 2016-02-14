@@ -160,6 +160,13 @@ def power_things():
     R.power.beep(500, note='d')
     R.power.beep(2000, frequency=400)
 
+    R.power.output[0] = False
+    R.power.output[0] = True
+
+    # Not yet supported
+    is_on = R.power.output[0]
+    for x in R.power.output:
+        pass
 
 def servo_things():
 
