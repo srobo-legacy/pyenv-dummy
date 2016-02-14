@@ -11,12 +11,18 @@ from __future__ import print_function
 import sr.robot
 from sr.robot import *
 
+import os
+
 R = sr.robot.Robot()
 
 print(R.usbkey)
+print("usb path is :" + R.usbkey)
 print(R.startfifo)
 print(R.mode)
+print("mode is :" + R.mode)
 print(R.zone)
+
+a_file = os.path.join(R.usbkey, "my-file.txt")
 
 def motor_things():
 

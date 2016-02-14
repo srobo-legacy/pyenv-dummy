@@ -95,9 +95,9 @@ class Robot(object):
         return Robot()
 
     def __init__(self):
-        self.usbkey = None
+        self.usbkey = '/dev/null'
         self.startfifo = None
-        self.mode = None
+        self.mode = 'dev'
         self.zone = None
         self.motors = {0: Motor()}
         self.ruggeduinos = {0: Ruggeduino()}
