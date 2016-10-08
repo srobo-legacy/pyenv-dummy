@@ -103,7 +103,7 @@ class Robot(object):
         self.usbkey = '/dev/null'
         self.startfifo = None
         self.mode = 'dev'
-        self.zone = None
+        self.zone = 0
         self.motors = {0: Motor()}
         self.ruggeduinos = {0: Ruggeduino()}
         self.power = Power()

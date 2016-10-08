@@ -21,6 +21,9 @@ print(R.startfifo)
 print(R.mode)
 print("mode is :" + R.mode)
 print(R.zone)
+mylist = ['a', 'b']
+print(mylist[R.zone])
+print("zone is :%d" % (R.zone,))
 
 a_file = os.path.join(R.usbkey, "my-file.txt")
 
