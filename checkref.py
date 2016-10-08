@@ -79,8 +79,7 @@ def vision_things():
     markers = R.see()
 
     print("Common marker types: ", MARKER_ARENA, MARKER_ROBOT)
-    print("Game marker types: ", MARKER_TOKEN_TOP, MARKER_TOKEN_SIDE, MARKER_TOKEN_BOTTOM)
-    print("Token nets: ", NET_A, NET_B, NET_C)
+    print("Game marker types: ", MARKER_TOKEN_A, MARKER_TOKEN_B, MARKER_TOKEN_C)
 
     for marker in markers:
         print(marker)

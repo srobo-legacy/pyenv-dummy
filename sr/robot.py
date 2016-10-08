@@ -10,8 +10,7 @@ from collections import namedtuple as _namedtuple
 
 # Constants
 MARKER_ARENA, MARKER_ROBOT = 'arena', 'robot'
-MARKER_TOKEN_TOP, MARKER_TOKEN_SIDE, MARKER_TOKEN_BOTTOM = 'top', 'side', 'bottom'
-NET_A, NET_B, NET_C = 'a', 'b', 'c'
+MARKER_TOKEN_A, MARKER_TOKEN_B, MARKER_TOKEN_C = 'token-a', 'token-b', 'token-c'
 
 INPUT = "INPUT"
 OUTPUT = "OUTPUT"
