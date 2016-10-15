@@ -165,6 +165,13 @@ def power_things():
     R.power.output[0] = False
     R.power.output[0] = True
 
+    R.power.output[OUT_H0] = True
+    R.power.output[OUT_H1] = True
+    R.power.output[OUT_L0] = True
+    R.power.output[OUT_L1] = True
+    R.power.output[OUT_L2] = True
+    R.power.output[OUT_L3] = True
+
     # Not yet supported
     is_on = R.power.output[0]
     for x in R.power.output:

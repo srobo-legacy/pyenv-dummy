@@ -16,6 +16,8 @@ INPUT = "INPUT"
 OUTPUT = "OUTPUT"
 INPUT_PULLUP = "INPUT_PULLUP"
 
+OUT_H0, OUT_H1, OUT_L0, OUT_L1, OUT_L2, OUT_L3 = range(6)
+
 # Power
 
 class Battery(object):
