@@ -4,6 +4,9 @@ SR API as it can, in as many ways as is sane and some that aren't.
 This should not be considered a reference for the API, instead you should
 read the docs (http://srobo.org/docs/programming), or see the trac page
 about the API: http://srobo.org/trac/wiki/RobotAPI.
+
+Note the hyphen in the name of this file to prevent it being imported when
+this repo is added to $PYTHONPATH.
 '''
 
 from __future__ import print_function

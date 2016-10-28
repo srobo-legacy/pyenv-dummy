@@ -2,7 +2,7 @@
 
 if [ -z "$1" ]
 then
-    target=checkref.py
+    target=check-ref.py
 else
     target="$1"
 fi
