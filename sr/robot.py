@@ -52,9 +52,10 @@ class Motor(object):
 
 class Ruggeduino(object):
     # Custom Ruggeduino things
-    def __init__(self):
+    def __init__(self, path, serialnum = None):
         self.lock = None
-        self.path = '/dev/null'
+        self.path = str(path)
+        self.serialnum = serialnum
 
     def command(self, string):
         pass

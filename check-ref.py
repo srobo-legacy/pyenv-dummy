@@ -149,6 +149,8 @@ def ruggeduino_things():
     first = R.ruggeduinos["sr01234"]
     first.digital_write(3, False)
 
+    my_duino = Ruggeduino('/dev/null', serialnum='ABC123')
+
     # In a loop
     for duino in R.ruggeduinos.values():
         duino.pin_mode(3, INPUT)
