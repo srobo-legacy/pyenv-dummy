@@ -9,8 +9,7 @@ This should not be considered canonical!
 from collections import namedtuple as _namedtuple
 
 # Constants
-MARKER_ARENA, MARKER_ROBOT = 'arena', 'robot'
-MARKER_TOKEN_A, MARKER_TOKEN_B, MARKER_TOKEN_C = 'token-a', 'token-b', 'token-c'
+MARKER_ARENA, MARKER_TOKEN = 'arena', 'token'
 
 INPUT = "INPUT"
 OUTPUT = "OUTPUT"
