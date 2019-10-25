@@ -82,7 +82,7 @@ def vision_things():
     markers = R.see()
 
     print("Common marker types: ", MARKER_ARENA)
-    print("Game marker types: ", MARKER_TOKEN)
+    print("Game marker types: ", MARKER_TOKEN_GOLD, MARKER_TOKEN_SILVER)
 
     for marker in markers:
         print(marker)
