@@ -7,6 +7,7 @@ This should not be considered canonical!
 
 # Imports
 from collections import namedtuple as _namedtuple
+from threading import Lock as _Lock
 
 # Constants
 MARKER_ARENA, MARKER_TOKEN_GOLD, MARKER_TOKEN_SILVER = 'arena', 'gold-token', 'silver-token'
@@ -52,7 +53,7 @@ class Motor(object):
 class Ruggeduino(object):
     # Custom Ruggeduino things
     def __init__(self, path, serialnum = None):
-        self.lock = None
+        self.lock = _Lock()
         self.path = str(path)
         self.serialnum = serialnum
 
