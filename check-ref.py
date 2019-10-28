@@ -252,11 +252,10 @@ def alt_duino_things():
 
     R.wait_start()
 
-    # this will error, unfortunately
-    #for r in R.ruggeduinos:
-    #    r.path
-    #    r.serialnum
-    #    r.test()
+    for r in R.ruggeduinos:
+       r.path
+       r.serialnum
+       r.test()
 
 if __name__ == '__main__':
     motor_things()
